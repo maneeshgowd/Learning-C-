@@ -5,6 +5,9 @@
 class Random
 {
     public int age = 20; // Data member (state)
+
+    // readonly fields can be assigned only once, either at declaration or in constructor.
+    public readonly int data = 100;
     public void showAge() // Method (acts upon state)
     {
         Console.WriteLine("My age is {0}", age);
