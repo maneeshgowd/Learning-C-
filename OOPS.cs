@@ -91,3 +91,54 @@ public class DbMigrator
 // - Benefits of composition:
 // • Flexible
 // • Leads to loose coupling
+
+//////////////////////////////////////////////
+// POLYMORPHISM
+//   
+abstract class ShapeBase
+{
+    protected int Width { get; set; }
+    protected int Height { get; set; }
+    protected string? Name { get; set; }
+    public abstract void Draw();
+}
+
+class Rectangle : ShapeBase
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Rectange called!");
+    }
+}
+
+class Circle : ShapeBase
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Circle called!");
+    }
+}
+
+class Canva
+{
+    public void DisplayCanva(List<ShapeBase> list)
+    {
+        foreach (var shape in list)
+        {
+            // Here draw method on which shape type will be called is determined at runtime.
+            // This shows us the concept of runtime-polymophism were the type is determined at runtime.
+            shape.Draw();
+        }
+    }
+}
+
+class Main
+{
+    void Main()
+    {
+        // Passing Circle and Rectangle objects
+        List<ShapeBase> list = new List<ShapeBase> { new Circle(), new Rectangle() };
+        Canva c = new Canva();
+        c.DisplayCanva(list);
+    }
+}
