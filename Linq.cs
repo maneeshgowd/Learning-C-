@@ -16,6 +16,22 @@ internal class Program
                 new Person() {FirstName = "Rahul", LastName="Gowd", Age=22,Profession="SE"}
             };
 
+
+        // Linq query operators
+        var userrr =
+            from u in users
+            where u.Age >= 22
+            orderby u.Age
+            select u;
+
+        foreach (var a in userrr)
+        {
+            Console.WriteLine(a.FirstName + " " + a.Age);
+        }
+
+        ////////////////////////////////////////////////
+        // Linq extension methods
+
         // Filters the users whose lastname is kumar
         var kumar = users.Where(user => user.LastName == "Kumar");
 
